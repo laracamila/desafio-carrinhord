@@ -216,3 +216,30 @@ bundle exec rspec
 
 ### Como enviar seu projeto
 Salve seu código em um versionador de código (GitHub, GitLab, Bitbucket) e nos envie o link publico. Se achar necessário, informe no README as instruções para execução ou qualquer outra informação relevante para correção/entendimento da sua solução.
+
+
+# Minha Solução
+
+🧩 O que foi implementado
+-	Endpoints REST para carrinho:
+-	GET /cart – lista o carrinho atual
+-	POST /cart – adiciona produto (incrementa se já existir)
+-	POST /cart/add_item – incrementa quantidade de um produto
+-	DELETE /cart/:product_id – remove produto do carrinho
+-	CRUD de Products
+-	Job com Sidekiq + sidekiq-scheduler:
+-	Marca carrinhos abandonados após 3h sem interação
+-	Remove carrinhos abandonados há mais de 7 dias
+- Testes com RSpec + FactoryBot
+-	Docker Compose (web, db, redis, sidekiq, test)
+
+⸻
+
+API disponível em: http://localhost:3000
+
+### 🧠 Lógica de negócio
+	•	CartItem valida quantidade positiva e recalcula o total do carrinho.
+	•	Cart mantém total_price sempre atualizado.
+	•	abandoned_at marca quando o carrinho foi abandonado → usado pelo job para remoção após 7 dias.
+
+ 
